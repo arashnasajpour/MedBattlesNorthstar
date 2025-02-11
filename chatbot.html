@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="chatbot.html">Trial Chatbot</a> |
+        <a href="subscribe.html">Subscribe</a> |
+        <a href="about.html">About</a> |
+        <a href="use-cases.html">Use Cases</a> |
+        <a href="roadmap.html">Roadmap</a>
+    </nav>
+
     <div id="chat-container">
         <h2>MedBattles Chatbot Trial</h2>
         <div id="chat-box"></div>
@@ -20,62 +29,9 @@
     <div id="paywall">
         <h2>You’ve reached the trial limit!</h2>
         <p>Upgrade to access the full MedBattles chatbot with advanced features, USMLE case simulations, and more!</p>
-        <button id="subscribe-button">Subscribe Now</button>
+        <button id="subscribe-button" onclick="location.href='subscribe.html'">Subscribe Now</button>
     </div>
 
-    <script>
-        const chatBox = document.getElementById("chat-box");
-        const userInput = document.getElementById("user-input");
-        const sendButton = document.getElementById("send-button");
-        const paywall = document.getElementById("paywall");
-        const subscribeButton = document.getElementById("subscribe-button");
-
-        let messageCount = 0;
-        const trialLimit = 5;
-
-        function getBotResponse(input) {
-            input = input.toLowerCase();
-            if (input.includes("hello") || input.includes("hi")) return "Hello! How can I help you today?";
-            else if (input.includes("usmle")) return "MedBattles offers interactive USMLE prep! What part are you interested in?";
-            else if (input.includes("goodbye")) return "Goodbye! Have a great day and come back anytime!";
-            else return "I'm not sure about that. Could you please clarify?";
-        }
-
-        function addMessageToChat(content, sender) {
-            const messageDiv = document.createElement("div");
-            messageDiv.className = sender === "user" ? "message user-message" : "message bot-message";
-            messageDiv.textContent = content;
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function handleUserMessage() {
-            const userMessage = userInput.value.trim();
-            if (userMessage === "") return;
-
-            addMessageToChat(userMessage, "user");
-            userInput.value = "";
-            messageCount++;
-
-            if (messageCount >= trialLimit) {
-                setTimeout(() => paywall.style.display = "flex", 500);
-                return;
-            }
-
-            setTimeout(() => {
-                const botResponse = getBotResponse(userMessage);
-                addMessageToChat(botResponse, "bot");
-            }, 500);
-        }
-
-        sendButton.addEventListener("click", handleUserMessage);
-        userInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") handleUserMessage();
-        });
-
-        subscribeButton.addEventListener("click", () => {
-            window.location.href = 'subscribe.html';
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
