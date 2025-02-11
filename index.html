@@ -9,7 +9,7 @@
 <body>
     <nav>
         <a href="index.html">Home</a> |
-        <a href="chatbot.html">Trial Chatbot</a> |
+        <a href="chatbot.html">Full Chatbot</a> |
         <a href="subscribe.html">Subscribe</a> |
         <a href="about.html">About</a> |
         <a href="use-cases.html">Use Cases</a> |
@@ -19,16 +19,19 @@
     <header>
         <h1>Welcome to MedBattles</h1>
         <p>The future of medical learning is here—powered by AI, built for students, doctors, and educators.</p>
-        <button onclick="location.href='chatbot.html'">Start the Trial Chatbot</button>
+        <h2>Try Our AI Chatbot Demo Below:</h2>
     </header>
 
-    <section>
-        <h2>Why Choose MedBattles?</h2>
-        <ul>
-            <li>🌟 AI-powered USMLE case simulations</li>
-            <li>🌟 Interactive learning through real-world scenarios</li>
-            <li>🌟 Specialty-specific diagnostics and treatment guidance</li>
-        </ul>
+    <section id="chat-container">
+        <h3>Chatbot Trial</h3>
+        <div id="chat-box"></div>
+
+        <div>
+            <input type="text" id="user-input" placeholder="Type your message..." autofocus>
+            <button id="send-button">Send</button>
+        </div>
     </section>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

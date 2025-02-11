@@ -1,7 +1,7 @@
-const trialLimit = 5;
 let messageCount = 0;
+const trialLimit = 5;
 
-async function handleUserMessage() {
+function handleUserMessage() {
     const userInput = document.getElementById("user-input");
     const userMessage = userInput.value.trim();
     if (userMessage === "") return;
@@ -11,11 +11,16 @@ async function handleUserMessage() {
     messageCount++;
 
     if (messageCount > trialLimit) {
-        document.getElementById("paywall").style.display = "flex";
-        return;
+        const paywall = document.getElementById("paywall");
+        if (paywall) {
+            paywall.style.display = "flex";
+            return;
+        }
     }
 
-    addMessageToChat("This is a placeholder response. OpenAI integration will replace this.", "bot");
+    setTimeout(() => {
+        addMessageToChat("This is a trial bot response. Upgrade for full access!", "bot");
+    }, 500);
 }
 
 function addMessageToChat(message, sender) {
